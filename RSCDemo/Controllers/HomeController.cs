@@ -2,11 +2,13 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Graph;
 using Microsoft.Identity.Client;
+using RSCDemo.Helpers;
 using RSCWithGraphAPI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Headers;
+using System.Threading.Channels;
 using System.Threading.Tasks;
 
 namespace RSCWithGraphAPI.Controllers
@@ -24,13 +26,14 @@ namespace RSCWithGraphAPI.Controllers
         /// RSC Setup
         /// </summary>
         [Route("Demo")]
-        public async Task<ActionResult> Demo(string tenantId, string groupId)
+        public async Task<ActionResult> Demo(string tenantId, string groupId, string channelId)
         {
             GraphServiceClient graphClient = await GetAuthenticatedClient(tenantId);
             var viewModel = new DemoViewModel()
             {
                 Channels = await GetChannelsList(graphClient, tenantId, groupId),
-                Permissions = await GetPermissionGrants(graphClient, tenantId, groupId)
+                //Permissions = await GetPermissionGrants(graphClient, tenantId, groupId)
+                Permissions = await GetMessagesList(graphClient, tenantId, groupId, channelId),
             };
             return View(viewModel);
         }
@@ -63,6 +66,22 @@ namespace RSCWithGraphAPI.Controllers
                 .GetAsync();
 
             return result.Select(r => r.Permission).ToList();
+        }
+
+        private async Task<List<string>> GetMessagesList(GraphServiceClient graphClient, string tenantId, string groupId, string channelId)
+        {
+            var queryOptions = new List<QueryOption>()
+            {
+                new QueryOption("top", "3")
+            };
+
+            var result = await graphClient.Teams[groupId].Channels[channelId].Messages
+                .Request()
+                .GetAsync();
+
+            GraphHelper.WriteToJsonFile("C:\\Users\\josephfedota\\Desktop\\output.json", result.ToList(), false);
+
+            return result.Select(r => r.Body.Content).ToList();
         }
 
 

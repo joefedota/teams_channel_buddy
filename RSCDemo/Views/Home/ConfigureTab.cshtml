@@ -8,7 +8,7 @@
         microsoftTeams.pages.config.registerOnSaveHandler(function (saveEvent) {
             microsoftTeams.pages.config.setConfig({
                 entityId: 'RSCDemo',
-                contentUrl: window.location.origin + "/Demo?tenantId={tid}&groupId={groupId}",
+                contentUrl: window.location.origin + "/Demo?tenantId={tid}&groupId={groupId}&channelId={channelId}",
                 configName: 'RSCDemo'
             });
             saveEvent.notifySuccess();
