@@ -2,7 +2,7 @@
   "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.12/MicrosoftTeams.schema.json",
   "manifestVersion": "1.12",
   "version": "1.0.0",
-  "id": "<<Your Microsoft APP Id>>",
+  "id": "16151476-25d1-451d-b44f-2f40a5223546",
   "packageName": "com.teams.RSC",
   "developer": {
     "name": "Microsoft",
@@ -25,7 +25,7 @@
   "accentColor": "#5558AF",
   "configurableTabs": [
     {
-      "configurationUrl": "https://[Your tunnel Domain]/ConfigureTab",
+      "configurationUrl": "https://1f77-136-27-48-251.ngrok-free.app/ConfigureTab",
       "canUpdateConfiguration": true,
       "scopes": [
         "team"
@@ -37,10 +37,10 @@
     "messageTeamMembers"
   ],
   "validDomains": [
-    "<<domain-name>>"
+    "1f77-136-27-48-251.ngrok-free.app"
   ],
   "webApplicationInfo": {
-    "id": "<<Your Microsoft APP Id>>",
+    "id": "16151476-25d1-451d-b44f-2f40a5223546",
     "resource": "https://RscBasedStoreApp"
   },
   "authorization": {
