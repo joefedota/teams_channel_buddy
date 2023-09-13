@@ -1,9 +1,12 @@
-using Azure.AI.OpenAI;
+
 using Azure;
+using Azure.AI.OpenAI;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Graph;
 using Microsoft.Identity.Client;
+using RSCDemo.Models;
+using RSCDemo.Utils;
 using RSCWithGraphAPI.Models;
 using System;
 using System.Collections.Generic;
@@ -80,6 +83,7 @@ namespace RSCWithGraphAPI.Controllers
         [Route("Demo")]
         public async Task<ActionResult> Demo(string tenantId, string groupId, string channelId)
         {
+     
             GraphServiceClient graphClient = await GetAuthenticatedClient(tenantId);
             var viewModel = new DemoViewModel()
             {
@@ -88,6 +92,14 @@ namespace RSCWithGraphAPI.Controllers
                 Permissions = await TempWrapper(graphClient, tenantId, groupId, channelId),
             };
             return View(viewModel);
+        }
+
+        [Route("AppState")]
+        public IActionResult AppState()
+        {
+            GetAppStateData();
+
+            return View();
         }
 
         /// <summary>
@@ -166,5 +178,22 @@ namespace RSCWithGraphAPI.Controllers
             return result.AccessToken;
         }
 
+
+        private async Task<ViewResult> GetAppStateData()
+        {
+            String message = RSCDemo.Utils.AppState.GetAppState();
+            var viewModel = new AppStateModel()
+            {
+                LastMessage = message
+                //string completion = completionsResponse.Value.Choices[0].Text;
+                //Console.WriteLine($"Chatbot: {completion}");
+            };
+
+            return View(viewModel);
+
+         
+        }
+
+
+        }
     }
-}
