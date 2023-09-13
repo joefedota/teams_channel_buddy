@@ -145,20 +145,20 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.RSCDemo.Microsoft.AspNetCore.StaticWebAssets.props",
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.TeamsChannelBuddy.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },
     {
-      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.RSCDemo.props",
-      "PackagePath": "build\\RSCDemo.props"
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.TeamsChannelBuddy.props",
+      "PackagePath": "build\\TeamsChannelBuddy.props"
     },
     {
-      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.RSCDemo.props",
-      "PackagePath": "buildMultiTargeting\\RSCDemo.props"
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.TeamsChannelBuddy.props",
+      "PackagePath": "buildMultiTargeting\\TeamsChannelBuddy.props"
     },
     {
-      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.RSCDemo.props",
-      "PackagePath": "buildTransitive\\RSCDemo.props"
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.TeamsChannelBuddy.props",
+      "PackagePath": "buildTransitive\\TeamsChannelBuddy.props"
     }
   ],
   "ElementsToRemove": []

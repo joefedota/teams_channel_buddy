@@ -9542,9 +9542,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\josephfedota\\hackathon\\teams_channel_buddy\\RSCDemo\\RSCDemo.csproj",
-      "projectName": "RSCDemo",
-      "projectPath": "C:\\Users\\josephfedota\\hackathon\\teams_channel_buddy\\RSCDemo\\RSCDemo.csproj",
+      "projectUniqueName": "C:\\Users\\josephfedota\\hackathon\\teams_channel_buddy\\RSCDemo\\TeamsChannelBuddy.csproj",
+      "projectName": "TeamsChannelBuddy",
+      "projectPath": "C:\\Users\\josephfedota\\hackathon\\teams_channel_buddy\\RSCDemo\\TeamsChannelBuddy.csproj",
       "packagesPath": "C:\\Users\\josephfedota\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\josephfedota\\hackathon\\teams_channel_buddy\\RSCDemo\\obj\\",
       "projectStyle": "PackageReference",

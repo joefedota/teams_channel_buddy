@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30804.86
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34009.444
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RSCDemo", "RSCDemo\RSCDemo.csproj", "{7A5232FE-4962-4BCA-B82C-38180046DDC4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeamsChannelBuddy", "RSCDemo\TeamsChannelBuddy.csproj", "{7A5232FE-4962-4BCA-B82C-38180046DDC4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

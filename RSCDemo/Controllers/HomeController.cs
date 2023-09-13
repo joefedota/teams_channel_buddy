@@ -2,14 +2,18 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Graph;
 using Microsoft.Identity.Client;
-using RSCDemo.Helpers;
 using RSCWithGraphAPI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Headers;
-using System.Threading.Channels;
 using System.Threading.Tasks;
+using RSCDemo.Helpers;
+using System.ComponentModel;
+using System.Drawing;
+using System.Text;
+using MessagePack.Formatters;
+using System.Threading.Channels;
 
 namespace RSCWithGraphAPI.Controllers
 {
@@ -31,9 +35,9 @@ namespace RSCWithGraphAPI.Controllers
             GraphServiceClient graphClient = await GetAuthenticatedClient(tenantId);
             var viewModel = new DemoViewModel()
             {
-                Channels = await GetChannelsList(graphClient, tenantId, groupId),
+                //Channels = await GetChannelsList(graphClient, tenantId, groupId),
                 //Permissions = await GetPermissionGrants(graphClient, tenantId, groupId)
-                Permissions = await GetMessagesList(graphClient, tenantId, groupId, channelId),
+                Permissions = await TempWrapper(graphClient, tenantId, groupId, channelId),
             };
             return View(viewModel);
         }
@@ -52,38 +56,24 @@ namespace RSCWithGraphAPI.Controllers
             return View();
         }
 
-        private async Task<List<string>> GetChannelsList(GraphServiceClient graphClient, string tenantId, string groupId)
+        private async Task<List<CustomMessage>> GetMessagesList(GraphServiceClient graphClient, string tenantId, string groupId, string channelId)
         {
-            var result = await graphClient.Teams[groupId].Channels.Request()
-                .GetAsync();
+            //TODO: replace with MessageHistory object which will implement .Clean() to clean message history
+            List<CustomMessage> messages = new List<CustomMessage>();
+            var pageIterator = await GraphHelper.GetMessagesIterator(graphClient, tenantId, groupId, channelId, messages);
 
-            return result.Select(r => r.DisplayName).ToList();
+            await pageIterator.IterateAsync();
+            GraphHelper.WriteToJsonFile("C:\\Users\\josephfedota\\Desktop\\output.json", messages, false);
+
+            //return result.Select(r => r.Body.Content).ToList();
+            return messages;
         }
 
-        private async Task<List<string>> GetPermissionGrants(GraphServiceClient graphClient, string tenantId, string groupId)
+        private async Task<List<string>> TempWrapper(GraphServiceClient graphClient, string tenantId, string groupId, string channelId) 
         {
-            var result = await graphClient.Groups[groupId].PermissionGrants.Request()
-                .GetAsync();
-
-            return result.Select(r => r.Permission).ToList();
+            var messages = await GetMessagesList(graphClient, tenantId, groupId, channelId);
+            return new List<string>() { messages[0].ToString() };
         }
-
-        private async Task<List<string>> GetMessagesList(GraphServiceClient graphClient, string tenantId, string groupId, string channelId)
-        {
-            var queryOptions = new List<QueryOption>()
-            {
-                new QueryOption("top", "3")
-            };
-
-            var result = await graphClient.Teams[groupId].Channels[channelId].Messages
-                .Request()
-                .GetAsync();
-
-            GraphHelper.WriteToJsonFile("C:\\Users\\josephfedota\\Desktop\\output.json", result.ToList(), false);
-
-            return result.Select(r => r.Body.Content).ToList();
-        }
-
 
         /// <summary>
         ///Get Authenticated Client

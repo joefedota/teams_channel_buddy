@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3sTbtNLGS6G8hfgpEz58w+2zPq/9uWORATFPdIK8ZoODCMuyzvQ3bzqx2wGtIYyKFrBck+0CqXmw4O5H20Z/XA==",
+  "dgSpecHash": "nX1yL22kskwoCcp9iD6BEfToSbiy/6FZP64yCHFjK6VvLaL33IaJC/x6DQRluqiVchLptkp/iJwRZhLzSHH6yg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\josephfedota\\hackathon\\teams_channel_buddy\\RSCDemo\\RSCDemo.csproj",
+  "projectFilePath": "C:\\Users\\josephfedota\\hackathon\\teams_channel_buddy\\RSCDemo\\TeamsChannelBuddy.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\josephfedota\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\josephfedota\\.nuget\\packages\\humanizer.core\\2.2.0\\humanizer.core.2.2.0.nupkg.sha512",
