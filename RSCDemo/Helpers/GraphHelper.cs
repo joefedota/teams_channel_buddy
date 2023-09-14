@@ -39,7 +39,7 @@ namespace RSCDemo.Helpers
                     (msg) =>
                     {
                         
-                        CustomMessage newMessage = new CustomMessage(JsonConvert.SerializeObject(msg), msg.LastModifiedDateTime, msg.Body.Content, msg.From == null ? "" : msg.From.User.ToString());
+                        CustomMessage newMessage = new CustomMessage(msg.LastModifiedDateTime, msg.Body.Content, msg.From == null ? "" : msg.From.User.DisplayName);
                         //TODO: replace with MessageHistory Object so can run Clean from controller
                         messages.Add(newMessage);
                         //populate object to pass to OpenAI helper with required fields
