@@ -1,5 +1,3 @@
-using NuGet.Packaging.Core;
-
 namespace RSCDemo.Helpers
 {
     //placeholder in case we want to impose structure / parse the data into cleaner form
@@ -8,6 +6,7 @@ namespace RSCDemo.Helpers
         public string Content;
         public string User;
         public System.DateTime lastModified;
+
         public CustomMessage(System.DateTimeOffset? lastModified, string content, string user)
         {
             this.Content = content;
