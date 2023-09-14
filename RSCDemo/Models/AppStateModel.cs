@@ -1,3 +1,4 @@
+using RSCDemo.Helpers;
 
 namespace RSCDemo.Models
 {
@@ -6,6 +7,6 @@ namespace RSCDemo.Models
         public int ChannelId { get; set; }
         public string Summary { get; set; }
         public string ActionItem { get; set; }
-        public string LastMessage { get; set; }
+        public CustomMessage LastMessage { get; set; }
     }
 }
