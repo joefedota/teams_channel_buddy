@@ -24,7 +24,7 @@ namespace RSCDemo.Helpers
             }
         }
 
-        public static async Task<PageIterator<ChatMessage>> GetMessagesIterator(GraphServiceClient graphClient, string tenantId, string groupId, string channelId, List<CustomMessage> messages)
+        public static async Task<PageIterator<ChatMessage>> GetMessagesIterator(GraphServiceClient graphClient, string tenantId, string groupId, string channelId, MessageHistory messages)
         {
 
             var result = await graphClient.Teams[groupId].Channels[channelId].Messages
@@ -38,7 +38,8 @@ namespace RSCDemo.Helpers
                     result,
                     (msg) =>
                     {
-                        CustomMessage newMessage = new CustomMessage(JsonConvert.SerializeObject(msg), msg.LastModifiedDateTime);
+                        
+                        CustomMessage newMessage = new CustomMessage(JsonConvert.SerializeObject(msg), msg.LastModifiedDateTime, msg.Body.Content, msg.From == null ? "" : msg.From.User.ToString());
                         //TODO: replace with MessageHistory Object so can run Clean from controller
                         messages.Add(newMessage);
                         //populate object to pass to OpenAI helper with required fields

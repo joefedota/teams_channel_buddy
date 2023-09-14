@@ -85,13 +85,13 @@ namespace RSCWithGraphAPI.Controllers
             return View(viewModel);
         }
 
-        [Route("AppState")]
-        public IActionResult AppState()
-        {
-            GetAppStateData();
+        //[Route("AppState")]
+        //public IActionResult AppState()
+        //{
+        //    GetAppStateData();
 
-            return View();
-        }
+        //    return View();
+        //}
 
         /// <summary>
         /// Configure Tab
@@ -107,14 +107,14 @@ namespace RSCWithGraphAPI.Controllers
             return View();
         }
 
-        private async Task<List<CustomMessage>> GetMessagesList(GraphServiceClient graphClient, string tenantId, string groupId, string channelId)
+        private async Task<MessageHistory> GetMessagesList(GraphServiceClient graphClient, string tenantId, string groupId, string channelId)
         {
             //TODO: replace with MessageHistory object which will implement .Clean() to clean message history
-            List<CustomMessage> messages = new List<CustomMessage>();
+            MessageHistory messages = new MessageHistory();
             var pageIterator = await GraphHelper.GetMessagesIterator(graphClient, tenantId, groupId, channelId, messages);
 
             await pageIterator.IterateAsync();
-            GraphHelper.WriteToJsonFile("C:\\Users\\josephfedota\\Desktop\\output.json", messages, false);
+            GraphHelper.WriteToJsonFile("C:\\Hackathon\\output.json", messages, false);
 
             //return result.Select(r => r.Body.Content).ToList();
             return messages;
@@ -123,7 +123,7 @@ namespace RSCWithGraphAPI.Controllers
         private async Task<List<string>> TempWrapper(GraphServiceClient graphClient, string tenantId, string groupId, string channelId)
         {
             var messages = await GetMessagesList(graphClient, tenantId, groupId, channelId);
-            return new List<string>() { messages[0].ToString() };
+            return new List<string>() { messages.Messages[0].ToString() };
         }
 
         /// <summary>
@@ -170,18 +170,18 @@ namespace RSCWithGraphAPI.Controllers
         }
 
 
-        private async Task<ViewResult> GetAppStateData()
-        {
-            String message = RSCDemo.Utils.AppState.GetAppState();
-            var viewModel = new AppStateModel()
-            {
-                LastMessage = message
-                //string completion = completionsResponse.Value.Choices[0].Text;
-                //Console.WriteLine($"Chatbot: {completion}");
-            };
+        //private async Task<ViewResult> GetAppStateData()
+        //{
+        //    String message = RSCDemo.Utils.AppState.GetAppState();
+        //    var viewModel = new AppStateModel()
+        //    {
+        //        LastMessage = message
+        //        //string completion = completionsResponse.Value.Choices[0].Text;
+        //        //Console.WriteLine($"Chatbot: {completion}");
+        //    };
 
-            return View(viewModel);
-        }
+        //    return View(viewModel);
+        //}
 
     }
 }
