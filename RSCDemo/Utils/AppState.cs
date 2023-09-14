@@ -41,13 +41,13 @@ namespace RSCDemo.Utils
                 appState1.ChannelId = 1;
                 appState1.Summary = "Test Summary";
                 appState1.ActionItem = "Test Action Item";
-                appState1.LastMessage = new CustomMessage("Test Message", DateTimeOffset.Now, string.Empty, string.Empty);
+                //appState1.LastMessage = new CustomMessage("Test Message", DateTimeOffset.Now, string.Empty, string.Empty);
 
                 AppStateModel appState2 = new AppStateModel();
                 appState2.ChannelId = 2;
                 appState2.Summary = "Test Summary 2";
                 appState2.ActionItem = "Test Action Item 2";
-                appState2.LastMessage = new CustomMessage("Test Message 2", DateTimeOffset.Now, string.Empty, string.Empty);
+                //appState2.LastMessage = new CustomMessage("Test Message 2", DateTimeOffset.Now, string.Empty, string.Empty);
 
                 UpdateAppStateUsingJson(new AppStateModel[] { appState1, appState2}); 
             }
