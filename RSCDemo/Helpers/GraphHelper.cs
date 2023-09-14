@@ -1,6 +1,5 @@
 using Microsoft.Graph;
 using Newtonsoft.Json;
-using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 
@@ -22,6 +21,11 @@ namespace RSCDemo.Helpers
                 if (writer != null)
                     writer.Close();
             }
+        }
+
+        public static string GetObjectInJson<T>(T objectToConvert) where T : new()
+        {
+            return JsonConvert.SerializeObject(objectToConvert);
         }
 
         public static async Task<PageIterator<ChatMessage>> GetMessagesIterator(GraphServiceClient graphClient, string tenantId, string groupId, string channelId, MessageHistory messages)
