@@ -15,12 +15,12 @@
     "outline": "outline.png"
   },
   "name": {
-    "short": "RSC-GraphAPI ",
-    "full": "RSC with Graph API"
+    "short": "MyGPT",
+    "full": "MyGPT, a personal teams assistant"
   },
   "description": {
-    "short": "RSC with Graph API",
-    "full": "Resource-specific consent (RSC) is a Microsoft Teams and Microsoft Graph API integration that enables your app to use API endpoints to manage specific teams within an organization"
+    "short": "MyGPT",
+    "full": "MyGPT, a Teams Personal Assistant which employees can interact with, that will monitor and organize all incoming messages from individual chats and group chats in Teams."
   },
   "accentColor": "#5558AF",
   "configurableTabs": [
