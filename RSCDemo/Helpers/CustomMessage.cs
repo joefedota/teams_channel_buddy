@@ -1,5 +1,3 @@
-﻿using Microsoft.Graph;
-
 namespace RSCDemo.Helpers
 {
     //placeholder in case we want to impose structure / parse the data into cleaner form
