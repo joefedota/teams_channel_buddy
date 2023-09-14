@@ -1,25 +1,16 @@
-
 using Azure;
 using Azure.AI.OpenAI;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Graph;
 using Microsoft.Identity.Client;
+using RSCDemo.Helpers;
 using RSCDemo.Models;
-using RSCDemo.Utils;
 using RSCWithGraphAPI.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using RSCDemo.Helpers;
-using System.ComponentModel;
-using System.Drawing;
-using System.Text;
-using MessagePack.Formatters;
-using System.Threading.Channels;
-using Microsoft.CodeAnalysis;
 
 namespace RSCWithGraphAPI.Controllers
 {
@@ -83,7 +74,7 @@ namespace RSCWithGraphAPI.Controllers
         [Route("Demo")]
         public async Task<ActionResult> Demo(string tenantId, string groupId, string channelId)
         {
-     
+
             GraphServiceClient graphClient = await GetAuthenticatedClient(tenantId);
             var viewModel = new DemoViewModel()
             {
@@ -129,7 +120,7 @@ namespace RSCWithGraphAPI.Controllers
             return messages;
         }
 
-        private async Task<List<string>> TempWrapper(GraphServiceClient graphClient, string tenantId, string groupId, string channelId) 
+        private async Task<List<string>> TempWrapper(GraphServiceClient graphClient, string tenantId, string groupId, string channelId)
         {
             var messages = await GetMessagesList(graphClient, tenantId, groupId, channelId);
             return new List<string>() { messages[0].ToString() };
@@ -190,10 +181,7 @@ namespace RSCWithGraphAPI.Controllers
             };
 
             return View(viewModel);
-
-         
         }
 
-
-        }
     }
+}
