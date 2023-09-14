@@ -5,7 +5,6 @@ namespace RSCDemo.Helpers
 {
     public class MessageHistory
     {
-
         //wrapper for message history will implement method for MessageHistory.CleanHistory
         public List<CustomMessage> Messages { get; set; }
 
@@ -32,6 +31,11 @@ namespace RSCDemo.Helpers
                 ptr++;
             }
             return ptr;
+        }
+
+        public override string ToString()
+        {
+            return GraphHelper.GetObjectInJson(this);
         }
     }
 }
