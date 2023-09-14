@@ -15,7 +15,7 @@ namespace RSCDemo.Helpers
             {
                 var contentsToWriteToFile = JsonConvert.SerializeObject(objectToWrite);
                 writer = new StreamWriter(filePath, append);
-                writer.Write(contentsToWriteToFile);
+                writer.WriteLine(contentsToWriteToFile);
             }
             finally
             {
