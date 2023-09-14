@@ -1,12 +1,8 @@
-﻿@model DemoViewModel;
+@model DemoViewModel;
 
 <div class="col-md-8">
     <div>
-        <h4>List of PermissionGrants current application has:</h4>
-        @foreach (var permission in Model.Permissions)
-        {
-            <p>@Html.DisplayFor(m => permission)</p>
-        }
-        <br />
+        <p>[Summary of chat history]</p>
+        <p>@Html.DisplayFor(m => Model.Response)</p>
     </div>
 </div>
