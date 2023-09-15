@@ -1,8 +1,19 @@
 @model DemoViewModel;
 
 <div class="col-md-8">
-    <div>
-        <p>[Summary of chat history]</p>
+    <section id="summary">
+        <h2>Summary</h2>
         <p>@Html.DisplayFor(m => Model.Response)</p>
-    </div>
+    </section>
+
+    <section id="action-items">
+        <h2>Action Items</h2>
+        <p>
+            In response to the issues raised in the summary, the following action items have been identified:
+        </p>
+        @foreach (var action in Model.Actions)
+        {
+            <p>@Html.DisplayFor(m => action)</p>
+        }
+    </section>
 </div>

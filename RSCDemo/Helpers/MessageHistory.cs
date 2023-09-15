@@ -35,6 +35,7 @@ namespace RSCDemo.Helpers
 
         public override string ToString()
         {
+            this.Messages.Reverse();
             return GraphHelper.GetObjectInJson(this);
         }
     }
