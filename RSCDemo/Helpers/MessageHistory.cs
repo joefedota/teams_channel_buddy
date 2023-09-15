@@ -13,13 +13,13 @@ namespace RSCDemo.Helpers
             Messages = new List<CustomMessage>();
         }
 
-        public void Add(CustomMessage message) {
-
+        public void Add(CustomMessage message)
+        {
             //TODO: implement Add method which will add the custom message if it's content is not <systemMessage>
-            if (!message.Content.Contains("systemEventMessage")) 
-            {
-                Messages.Add(message);
-            }
+            if (string.IsNullOrEmpty(message.Content)) return;
+            if (message.Content.Contains("systemEventMessage")) return;
+
+            Messages.Add(message);
         }
 
         // Returns a ptr to the last index (non-inclusive) of the list defining the set of new messages
