@@ -42,7 +42,7 @@ namespace RSCWithGraphAPI.Controllers
             {
                 //Messages = { new Azure.AI.OpenAI.ChatMessage(ChatRole.System, "You are a helpful assistant.") },
                 Messages = { new Azure.AI.OpenAI.ChatMessage(ChatRole.System, content) },
-                MaxTokens = 100
+                MaxTokens = 1000
             };
 
             Response<ChatCompletions> response = client.GetChatCompletions(
